@@ -1,6 +1,7 @@
 import React from 'react';
-import { ClassState } from './ClassState';
+import { UseReducer } from './UseReducer';
 import { UseState } from './UseState';
+import { ClassState } from './ClassState';
 import './App.css';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <React.Fragment>
       <div className="App">
         <UseState name="Use State"/>
-       <ClassState name="ClassState"/> 
+        <UseReducer name="Use Reducer"/> 
+        <ClassState name="Class State"/>
       </div>
     </React.Fragment>
   );
