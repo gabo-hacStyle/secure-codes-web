@@ -1,12 +1,16 @@
 import React from "react";
+//Loading: Un componente aparte 
 import { Loading } from "./Loading";
 
+//Código de seguridad 
 const SECURITY_CODE = 'paradigma';
 
 class ClassState extends React.Component{
     //Construyendo los estados con this.state
     constructor(props){
+    //Para traer de la clase React.Component sus propiedades
         super(props);
+    //Estados
         this.state = {
             err: false,
             value: '',
@@ -17,9 +21,12 @@ class ClassState extends React.Component{
     }
     
     //Ciclo de vida donde se actualiza
+    //Esto se hace en vez del effect
     componentDidUpdate() {
         if(this.state.loading){
+            //timeout para simular una llamada al backend
             setTimeout(() => {
+                //Sí el código está bien
                 if (SECURITY_CODE === this.state.value){
                     this.setState({
                         err: false, 
@@ -27,14 +34,17 @@ class ClassState extends React.Component{
                         confirmation: true
                     })
                 } else {
+                    //Sí el codigo está mal
                     this.setState({
                         err: true,
                         loading: false
                     })
                 }
             }, 2000)
-    }
-    }   
+        }
+    } 
+    //Renderiza 3 diferentes ventanas:
+    //La inicial, la de confirmación y la eliminada con éxito
     render(){
         const {err, loading, value, deleted, confirmation} = this.state;
         if(!deleted && !confirmation) {
@@ -50,7 +60,7 @@ class ClassState extends React.Component{
                     {(loading && 
                         <Loading /> 
                     )}
-                    
+                            
                     <input
                         value={value}
                         onChange={(event) => {
