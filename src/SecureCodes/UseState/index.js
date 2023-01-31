@@ -1,4 +1,5 @@
 import React from "react";
+import '../Styles/styles.css'
 
 //Estableciendo el código clave
 const SECURITY_CODE = 'paradigma';
@@ -88,8 +89,8 @@ function UseState (props){
     //El inicial
    if(!state.deleted && !state.confirmation) {
     return(
-        <div>
-            <h2>Usando {props.name}</h2>
+        <div className="state-container">
+            <h2 className="state-title">Usando {props.name}</h2>
             <p>Semi declarativo compuesto. Usando
                 el Hook useState, objetos y funciones
             </p>
@@ -101,6 +102,7 @@ function UseState (props){
                 <p>Cargando...</p>
             )}
             <input 
+                className="state-input"
                 placeholder="Codigo" 
                 value={state.value}
                 onChange={(event) => {
@@ -108,6 +110,7 @@ function UseState (props){
                 }}    
             />
             <button 
+                className="state-button--check"
                 type="submit"
                 onClick={() => { 
                     onCheck()

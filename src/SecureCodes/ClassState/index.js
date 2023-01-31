@@ -1,6 +1,8 @@
 import React from "react";
+import '../Styles/styles.css'
+
 //Loading: Un componente aparte 
-import { Loading } from "./Loading";
+import { Loading } from "../Loading";
 
 //Código de seguridad 
 const SECURITY_CODE = 'paradigma';
@@ -49,8 +51,8 @@ class ClassState extends React.Component{
         const {err, loading, value, deleted, confirmation} = this.state;
         if(!deleted && !confirmation) {
             return(
-                <div>
-                    <h2>Usando {this.props.name}</h2>
+                <div className="state-container">
+                    <h2 className="state-title">Usando {this.props.name}</h2>
                     <p>Manejo del estado de forma imperativa compuesta</p>
                     
                     {(err && !loading) && ( 
@@ -62,6 +64,7 @@ class ClassState extends React.Component{
                     )}
                             
                     <input
+                        className="state-input"
                         value={value}
                         onChange={(event) => {
                             this.setState({value: event.target.value})
@@ -69,6 +72,7 @@ class ClassState extends React.Component{
                         placeholder="Codigo" 
                     />
                     <button 
+                        className="state-button--check"
                         type="submit"
                         onClick={() => this.setState({loading: true})}
                     > Comprobar
